@@ -1,16 +1,22 @@
-const express = require('express')
-const exphbs = require('express-handlebars')
-const session = require('express-session')
-const FileStore = require('session-file-store')(session)
-const flash = require('express-flash')
+const express = require('express');
+const exphbs = require('express-handlebars');
+const session = require('express-session');
+const FileStore = require('session-file-store')(session);
+const flash = require('express-flash');
 
 const app = express();
 
 const conn = require('./db/conn');
 
+//Models
+const Tought = require('./models/Tought')
+const User = require('./models/User')
+
+
+
 //template engine
-app.engine('handlebars', exphbs())
-app.set('view engine', 'handlebars')
+app.engine('handlebars', exphbs.engine());
+app.set('view engine', 'handlebars');
 
 //reeber rsposta do body
 app.use(
@@ -57,7 +63,9 @@ app.use((req, res, next) =>{
 
 })
 
-conn .sync()
+conn 
+     //.sync({force:true}) //caso precise forçar alguma alteração no banco
+     .sync()
      .then(() => {
         app.listen(3000)
      })
