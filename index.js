@@ -13,6 +13,14 @@ const Tought = require('./models/Tought')
 const User = require('./models/User')
 
 
+//Import Routes
+const thoughtsRoutes = require('./routes/toughtsRoutes');
+
+
+//Import Controller
+const ToughtController = require('./controllers/ToughtController');
+
+
 
 //template engine
 app.engine('handlebars', exphbs.engine());
@@ -62,6 +70,11 @@ app.use((req, res, next) =>{
  next();
 
 })
+
+//Routes
+app.use('/tought', thoughtsRoutes)
+
+app.get('/', ToughtController.showToughts)
 
 conn 
      //.sync({force:true}) //caso precise forçar alguma alteração no banco
