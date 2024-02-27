@@ -37,3 +37,30 @@
     transition: .5s;
     font-weight: bold;
 }
+
+#navbar ul li a:hover {
+    color: #f6982d;
+}
+
+/* CONTAINER */
+.container{
+    min-height: 60vh;
+    padding: 6em;
+
+}
+
+
+/* FOOTER */
+footer{
+    height: 60px;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    border-top:1px solid #f6982d;
+    padding-bottom: 0;
+}
+
+footer span {
+    font-weight: bold;
+    color:#f6982d;
+}

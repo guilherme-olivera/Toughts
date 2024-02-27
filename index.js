@@ -15,6 +15,7 @@ const User = require('./models/User')
 
 //Import Routes
 const thoughtsRoutes = require('./routes/toughtsRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 
 //Import Controller
@@ -73,6 +74,7 @@ app.use((req, res, next) =>{
 
 //Routes
 app.use('/tought', thoughtsRoutes)
+app.use('/', authRoutes)
 
 app.get('/', ToughtController.showToughts)
 
